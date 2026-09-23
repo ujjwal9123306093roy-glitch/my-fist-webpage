@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foundations of Web Development | Portfolio Project</title>
+
+  <style>
+    /* Global styles and color variables */
+    :root {
+      --primary-color: #1e3a8a;       /* Deep Navy */
+      --secondary-color: #2563eb;     /* Vibrant Blue */
+      --accent-color: #0284c7;        /* Sky Blue */
+      --bg-light: #f8fafc;            /* Soft off-white */
+      --card-bg: #ffffff;             /* Pure white */
+      --text-main: #0f172a;           /* Dark slate */
+      --text-muted: #334155;          /* Neutral slate */
+      --border-color: #cbd5e1;        /* Subtle border */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      padding: 0 1rem;
+    }
+
+    /* Accessible Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      background: #000000;
+      color: #ffffff;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* Header & Hero Section */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #ffffff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Navigation Bar */
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover, nav a:focus {
+      background-color: #ffffff;
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    /* Styled Sections (Cards) */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      color: var(--secondary-color);
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: var(--text-main);
+    }
+
+    /* Technology Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    figure {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    figure img {
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Links & Aside */
+    a {
+      color: var(--secondary-color);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: var(--primary-color);
+    }
+
+    aside {
+      background-color: #eff6ff;
+      border-left: 4px solid var(--secondary-color);
+      padding: 1rem 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+    }
+
+    aside h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+
+    aside p {
+      margin: 0;
+      color: #1e293b;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-main);
+      color: #94a3b8;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 12px 12px 0 0;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      color: #cbd5e1;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <h1>Web Development Foundations</h1>
+    <p>Demonstrating modern semantic HTML5, accessible color palettes, and responsive CSS structure.</p>
+    
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#core-technologies">Technologies</a></li>
+        <li><a href="#learning-path">Roadmap</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    
+    <section id="overview">
+      <h2>Project Overview</h2>
+      <article>
+        <h3>The Shift to Semantic HTML5 & Modern CSS</h3>
+        <p>
+          Semantic tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> define the structural hierarchy of a web document. Pairing semantic HTML with modern CSS allows us to build clean, colorful, and accessible interfaces that screen readers and mobile browsers can easily parse.
+        </p>
+      </article>
+    </section>
+
+    <section id="core-technologies">
+      <h2>Core Web Technologies</h2>
+      <p>Modern front-end development relies on three foundational layers:</p>
+      <ul>
+        <li><strong>HTML5:</strong> Provides the semantic backbone and document outline.</li>
+        <li><strong>CSS3:</strong> Manages visual presentation, accessible color contrast, and layout systems.</li>
+        <li><strong>JavaScript:</strong> Introduces client-side interactivity, DOM operations, and data fetching.</li>
+      </ul>
+    </section>
+
+    <section id="learning-path">
+      <h2>Foundational Learning Roadmap</h2>
+      <p>A step-by-step approach to mastering modern web design:</p>
+      <ol>
+        <li>Mastering structural tags and separating content from style.</li>
+        <li>Designing responsive grid and flexbox layouts.</li>
+        <li>Applying WCAG-compliant color schemes for visual accessibility.</li>
+        <li>Hosting live projects on GitHub Pages for public deployment.</li>
+      </ol>
+    </section>
+
+    <section id="gallery">
+      <h2>Technology Gallery</h2>
+      <p>Core web specifications recognized worldwide:</p>
+
+      <div class="gallery-grid">
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" 
+               alt="Official orange HTML5 badge and wordmark" 
+               width="140">
+          <figcaption>HTML5: Content & Semantics</figcaption>
+        </figure>
+
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" 
+               alt="Official blue CSS3 shield logo" 
+               width="110">
+          <figcaption>CSS3: Styling & Responsive Design</figcaption>
+        </figure>
+
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" 
+               alt="Official yellow JavaScript square logo" 
+               width="110">
+          <figcaption>JavaScript: Behavior & Logic</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>Standards & Reference Guides</h2>
+      <p>Essential documentation for web developers:</p>
+      <ul>
+        <li>
+          <a href="https://www.w3.org/" target="_blank" rel="noopener noreferrer">
+            World Wide Web Consortium (W3C)
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
+            Mozilla Developer Network (MDN)
+          </a>
+        </li>
+        <li>
+          <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">
+            WAVE Accessibility Evaluation Suite
+          </a>
+        </li>
+      </ul>
+
+      <aside>
+        <h4>Design Philosophy Note</h4>
+        <p>
+          By styling purely via CSS rather than presentational HTML tags (like <code>&lt;center&gt;</code> or <code>&lt;font&gt;</code>), we preserve the clean separation of concerns and ensure accessible color contrast ratios.
+        </p>
+      </aside>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Portfolio Project. All rights reserved.</p>
+    <p>Validated for W3C HTML5 standards and WCAG 2.1 AA accessibility contrast.</p>
+  </footer>
+
+</body>
+</html>
